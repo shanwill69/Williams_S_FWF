@@ -1,17 +1,16 @@
-var app = angular.module("myApp", []);
-app.controller("listController", function($scope) {
-    $scope.listItems;
+var app = angular.module("myApp",[]);
+app.controller("listController", function($scope,dataService){
+    $scope.listItem;
 
-    $scope.listArray = ['Reeses Pieces', 'milk', 'dog food', 'pomegranates'];
+    $scope.listArray = dataService.getItem();
 
-    $scope.addItems = function(){
-        $scope.listArray.push($scope.listItems);
+    $scope.addItem = function(){
+        dataService.addItem($scope.listItem);
 
-        @scope.listItems = '';
+        @scope.listItem = '';
     }
 
-    $scope.deleteItems = function(deleteItems){
-        var idx = $scope.listArrary.indexOf(deletedItems);
-        $scope.listArrary.splice(idx,1);
+    $scope.deleteItem = function(deleteItem){
+        dataService.removeItem(deleteItem);
     }
 });
