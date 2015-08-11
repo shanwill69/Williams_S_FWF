@@ -7,11 +7,11 @@ app.controller("listController", function($scope) {
     $scope.addItems = function(){
         $scope.listArray.push($scope.listItems);
 
-        @scope.listItems = '';
+        $scope.listItems = '';  //@ symbol???? Should be $ for scope
     }
 
     $scope.deleteItems = function(deleteItems){
-        var idx = $scope.listArrary.indexOf(deletedItems);
-        $scope.listArrary.splice(idx,1);
+        var idx = $scope.listArray.indexOf(deletedItems);  //Array  spelled wrong
+        $scope.listArray.splice(idx,1);  //Array  spelled wrong
     }
 });
