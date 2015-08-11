@@ -1,17 +1,25 @@
-var app = angular.module("myApp", []);
-app.controller("listController", function($scope) {
-    $scope.listItems;
+var app = angular.module("myApp",[]);
+app.controller("listController", function($scope,dataService){
+    $scope.listItem;
 
-    $scope.listArray = ['Reeses Pieces', 'milk', 'dog food', 'pomegranates'];
+    $scope.listArray = dataService.getItem();
 
-    $scope.addItems = function(){
-        $scope.listArray.push($scope.listItems);
+    $scope.addItem = function(){
+        dataService.addItem($scope.listItem);
 
-        $scope.listItems = '';  //@ symbol???? Should be $ for scope
+
+    $scope.listItems = '';
     }
 
     $scope.deleteItems = function(deleteItems){
-        var idx = $scope.listArray.indexOf(deletedItems);  //Array  spelled wrong
-        $scope.listArray.splice(idx,1);  //Array  spelled wrong
+        var idx = $scope.listArray.indexOf(deletedItems);
+        $scope.listArray.splice(idx,1);
+
+        @scope.listItem = '';
+    }
+
+    $scope.deleteItem = function(deleteItem){
+        dataService.removeItem(deleteItem);
+
     }
 });
