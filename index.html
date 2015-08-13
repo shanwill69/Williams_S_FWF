@@ -5,7 +5,7 @@
     <title>Project 02</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
     <script src="js/app.js"></script>
-    <script src="js/dataService.js"></script>
+    <script src="js/DataService.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
 
 
@@ -47,6 +47,20 @@
                 <button ng-click="addNewAdds()">Add Employee</button>
 
             </form>
+
+        </div>
+
+        <div ng-repeat="adds in addreses track by $index">
+
+        <div>
+            <button type="button" ng-click="removeAdds($index)">$times;</button>
+            <strong>{{adds.name}}</strong>
+        </div>
+
+        <div>
+            {{adds.address}}<br />
+            {{adds.city}}, {{adds.state}} {{adds.zip}}
+        </div>
 
         </div>
 
