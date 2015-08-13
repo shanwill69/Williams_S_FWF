@@ -1,0 +1,35 @@
+body{
+    width: 960px;
+    margin: 0 auto;
+    background-color: lightgrey;
+}
+
+header{
+    background-color: #a29aa5;
+    margin: 0 auto;
+    padding: 40px;
+    text-align: center;
+    border: 2px solid #7a707f;
+}
+
+h3{
+    text-align: center;
+}
+
+#form{
+    width: 350px;
+    border: 2px solid #7a707f;
+    margin: 10px 15px 10px 10px;
+    padding: 15px;
+
+}
+
+.formFields{
+    padding: 10px;
+}
+
+button#save{
+    padding: 10px;
+    border-radius: 10px;
+    margin: 15px 0 0 20px;
+}

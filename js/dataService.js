@@ -15,7 +15,7 @@ angular.module("MyApp").service("DataService", function(){
 
     this.saveAdds = function(pName,pAddress,pCity,pState,pZip){
         var savedAdds = {name: pName, address: pAddress, city:pCity, state: pState, zip: pZip };
-        addsArray.push(SavedAdds);
+        addsArray.push(savedAdds);
         localStorage.setItem("addressesLS", JSON.stringify(addsArray));
     }
     this.removeAddsAt = function(pIndex){
