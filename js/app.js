@@ -1,25 +1,22 @@
-var app = angular.module("myApp",[]);
-app.controller("listController", function($scope,dataService){
-    $scope.listItem;
+var theApp = angular.module("MyApp",[]);
+theApp.controller("NewController", function($scope,dataService){
 
-    $scope.listArray = dataService.getItem();
+    $scope.addresses = dataService.getAdds();
+        $scope.newAdds = {};
 
-    $scope.addItem = function(){
-        dataService.addItem($scope.listItem);
+    $scope.addNewAdds = function(){
+        dataService.saveAdds($scope.newAdds.company,$scope.newAdds.street,
+            $scope.newAdds.city,$scope.newAdds.state,$scope.newAdds.zip);
+        $scope.newAdds = {};
+    };
 
+    $scope.removeAdds = function(idx){
+        dataService.removeAddsAt(idx);
+    };
 
-    $scope.listItems = '';
-    }
-
-    $scope.deleteItems = function(deleteItems){
-        var idx = $scope.listArray.indexOf(deletedItems);
-        $scope.listArray.splice(idx,1);
-
-        @scope.listItem = '';
-    }
-
-    $scope.deleteItem = function(deleteItem){
-        dataService.removeItem(deleteItem);
-
+    $scope.clearIt = function(){
+        dataService.destroyLocalStorage();
     }
 });
+
+

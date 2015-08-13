@@ -1,20 +1,30 @@
 /**
  * Created by shannonwilliams on 8/10/15.
  */
-angular.module("myApp").service("dataService", function(){
+angular.module("MyApp").service("dataService", function(){
 
-    var listArray = ['Reeses Pieces', 'milk', 'dog food', 'pomegranates'];
+    var addressArray = [];
 
-    this.getItem = function(){
-        return listArray;
+    this.getAdds = function(){
+        var addsArray =JSON.parse(localStorage.getAdds("addressesLS")) ||[];
+        addressArray = addsArray;
+            console.log(addsArray);
+        return addsArray;
+
     }
 
-    this.addItem = function(pItem){
-        listArray.push(pItem);
+    this.saveAdds = function(pName,pAddress,pCity,pState,pZip){
+        var savedAdds = {name: pName, address: pAddress, city:pCity, state: pState, zip: pZip };
+        addsArray.push(SavedAdds);
+        localStorage.setItem("addressesLS", JSON.stringify(addsArray));
     }
-
-    this.removeItem = function(pItem){
-        listArray.splice(listArray.indexOf(pItem),1);
+    this.removeAddsAt = function(pIndex){
+        addsArray.splice(pIndex,1);
+        localStorage.setItem("addressesLS",JSON.stringify(addsArray));
+    }
+    this.destroyLocalStorage = function(){
+        addsArray.splice(0);
+        localStorage.clear();
     }
 
 });
