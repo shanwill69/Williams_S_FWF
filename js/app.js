@@ -1,5 +1,5 @@
-var MyApp = angular.module("MyApp",[]);
-MyApp.controller("NewController", function($scope,DataService){
+var theApp = angular.module("MyApp",[]);
+theApp.controller("NewController", function($scope,DataService){
 
     $scope.addresses = DataService.getAdds();
         $scope.newAdds = {};
