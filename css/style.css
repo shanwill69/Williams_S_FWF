@@ -28,6 +28,11 @@ h3{
     padding: 10px;
 }
 
+.input{
+    text-align: right;
+    border-radius: 6px;
+}
+
 button#save{
     padding: 10px;
     border-radius: 10px;
