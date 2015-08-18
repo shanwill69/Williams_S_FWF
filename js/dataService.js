@@ -5,7 +5,7 @@ angular.module("MyApp").service("dataService",function(){
 
     var addressArray = [];
 
-    this.getItem = function(){
+    this.getAdds = function(){
         var addsArray =JSON.parse(localStorage.getItem("addressesLS")) ||[];
         addressArray = addsArray;
             console.log(addsArray);
