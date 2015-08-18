@@ -1,7 +1,7 @@
 /**
  * Created by shannonwilliams on 8/10/15.
  */
-angular.module("MyApp").service("DataService", function(){
+angular.module("MyApp").service("dataService", function(){
 
     var addressArray = [];
 

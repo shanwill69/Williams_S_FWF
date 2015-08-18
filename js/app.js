@@ -1,21 +1,21 @@
 var theApp = angular.module("MyApp",[]);
-theApp.controller("NewController", function($scope,DataService){
+theApp.controller("NewController", function($scope,dataService){
 
-    $scope.addresses = DataService.getAdds();
+    $scope.addresses = dataService.getItem();
         $scope.newAdds = {};
 
     $scope.addNewAdds = function(){
-        DataService.saveAdds($scope.newAdds.name,$scope.newAdds.street,
+        dataService.saveAdds($scope.newAdds.name,$scope.newAdds.street,
             $scope.newAdds.city,$scope.newAdds.state,$scope.newAdds.zip);
         $scope.newAdds = {};
     };
 
     $scope.removeAdds = function(idx){
-        DataService.removeAddsAt(idx);
+        dataService.removeAddsAt(idx);
     };
 
     $scope.clearIt = function(){
-        DataService.destroyLocalStorage();
+        dataServiceataService.destroyLocalStorage();
     }
 });
 
