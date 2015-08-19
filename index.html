@@ -23,7 +23,7 @@
             <form>
                 <div class="formFields">
                     <label>Employee:</label>
-                    <input class="input" type="text" name="name" ng-model="newAdds.name">
+                    <input class="input" type="text" name="name" ng-model="newAdds.myname">
                 </div>
 
                 <div class="formFields">
@@ -52,16 +52,16 @@
 
         </div>
 
-        <div ng-repeat="Adds in addresses track by $index">
+        <div ng-repeat="adds in addresses track by $index">
 
         <div>
-            <button type="button" ng-click="removeAdds($index)">$times;</button>
-            <strong>{{Adds.name}}</strong>
+            <button type="button" ng-click="removeAdds($index)">Remove</button>
+            <strong>{{adds.name}}</strong>
         </div>
 
         <div>
-            {{Adds.address}}<br />
-            {{Adds.city}}, {{Adds.state}} {{Adds.zip}}
+            {{adds.address}}<br />
+            {{adds.city}}, {{adds.state}} {{adds.zip}}
         </div>
 
         </div>
