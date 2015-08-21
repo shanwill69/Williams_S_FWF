@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>School View</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+<body>
+<div id="form">
+    <h3>School Schedule</h3>
+
+    <form>
+        <div class="formFields">
+            <label>Activity:</label>
+            <input class="input" type="text" name="activity" ng-model="newActs.activity">
+        </div>
+
+        <div class="formFields">
+            <label>Due Date:</label>
+            <input class="input" type="text" name="date" ng-model="newActs.date">
+        </div>
+
+        <button id="save" ng-click="addNewActs()">Add Activity</button>
+
+    </form>
+
+</div>
+
+<div ng-repeat="acts in activities track by $index">
+
+    <div>
+        <button type="button" ng-click="removeActs($index)">Remove</button>
+        <strong>{{acts.activity}}</strong>
+    </div>
+
+    <div>
+        {{acts.date}}<br />
+        {{acts.time}}
+    </div>
+
+</div>
+
+</body>
+</html>

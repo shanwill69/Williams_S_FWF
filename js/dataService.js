@@ -13,17 +13,17 @@ angular.module("MyApp").service("dataService",function(){
 
     }
 
-    this.saveActs = function(pName,pAddress,pCity,pState,pZip){
-        var savedActs = {name: pName, address: pAddress, city:pCity, state: pState, zip: pZip };
-        addressArray.push(savedAdds);
-        localStorage.setItem("addressesLS",JSON.stringify(addressArray));
+    this.saveActs = function(pActivity,pDate,pTime){
+        var savedActs = {activity: activity, date: pDate, time:pTime };
+        activitiesArray.push(savedActs);
+        localStorage.setItem("activitiesLS",JSON.stringify(activitiesArray));
     }
-    this.removeAddsAt = function(pIndex){
-        addressArray.splice(pIndex,1);
-        localStorage.setItem("addressesLS",JSON.stringify(addressArray));
+    this.removeActsAt = function(pIndex){
+        activitiesArray.splice(pIndex,1);
+        localStorage.setItem("activitiesLS",JSON.stringify(activitiesArray));
     }
     this.destroyLocalStorage = function(){
-        addressArray.splice(0);
+        activitiesArray.splice(0);
         localStorage.clear();
     }
 
