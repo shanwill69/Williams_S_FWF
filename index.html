@@ -2,31 +2,59 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>home page</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Project 02</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/dataService.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+
 </head>
 
-<body ng-app="myApp">
+    <body ng-app="MyApp" ng-controller="NewController">
 
-<div id="container">
-    <h1>To Do:</h1>
+    <header>
+        <h1>Schedules</h1>
+    </header>
 
-    <nav>
+        <div id="form">
+            <h3>Logan's Schedule</h3>
 
-        <a href="view01.html"><input type="button" value="Logan" /></a>
-        <a href="view02.html"><input type="button" value="Hannah" /></a>
-        <a href="view03.html"><input type="button" value="School" /></a>
+            <form>
+                <div class="formFields">
+                    <label>Activity:</label>
+                    <input class="input" type="text" name="activity" ng-model="newActs.activity">
+                </div>
 
-    </nav>
+                <div class="formFields">
+                    <label>Date:</label>
+                    <input class="input" type="text" name="date" ng-model="newActs.date">
+                </div>
+                
+                <div class="formFields">
+                    <label>Time:</label>
+                    <input class="input" type="text" name="time" ng-model="newActs.time">
+                </div>
+                
+                <button id="save" ng-click="addNewActs()">Add Activity</button>
 
-    <div ng-view></div>
+            </form>
 
-    <script type="text/javascript" src="js/angular.js"></script>
-    <script type="text/javascript" src="js/angular-route.min.js"></script>
-    <script type="text/javascript" src="js/app.js"></script>
-    <script type="text/javascript" src="js/dataService.js"></script>
+        </div>
 
-</div>
+        <div ng-repeat="acts in activities track by $index">
 
-</body>
+        <div>
+            <button type="button" ng-click="removeActs($index)">Remove</button>
+            <strong>{{acts.activity}}</strong>
+        </div>
+
+        <div>
+            {{acts.date}}<br />
+            {{acts.time}}
+        </div>
+
+        </div>
+
+    </body>
 </html>

@@ -1,58 +1,30 @@
-/** Created by shannonwilliams on 8/21/15. **/
+/*
+ * Created by shannonwilliams on 8/10/15.
+ */
+angular.module("MyApp").service("dataService",function(){
 
+    var activityArray = [];
 
-angular.module('myApp', ['ngRoute'])
+    this.getActs = function(){
+        var actsArray =JSON.parse(localStorage.getItem("activitiesLS")) || [];
+        activitiesArray = actsArray;
+            console.log(actsArray);
+        return activitiesArray;
 
-    .config(function($routeProvider){
-        $routeProvider.when('/view01',{
-            templateUrl : "view01.html",
-            controller : "loganCotroller"
-        }).when('/view02', {
-            templateUrl : "view02.html",
-            controller : "hannahController"
-        }).when("view03/:Koalas", {
-            templateUrl : "view03.html",
-            controller : "schoolController"
-        }).otherwise({
-            redirectTo : "/view01."
-        });
+    }
 
-    })
+    this.saveActs = function(pName,pAddress,pCity,pState,pZip){
+        var savedActs = {name: pName, address: pAddress, city:pCity, state: pState, zip: pZip };
+        addressArray.push(savedAdds);
+        localStorage.setItem("addressesLS",JSON.stringify(addressArray));
+    }
+    this.removeAddsAt = function(pIndex){
+        addressArray.splice(pIndex,1);
+        localStorage.setItem("addressesLS",JSON.stringify(addressArray));
+    }
+    this.destroyLocalStorage = function(){
+        addressArray.splice(0);
+        localStorage.clear();
+    }
 
-
-    /* creating controllers */
-
-    .controller('loganController', function($scope,dataService){
-
-        $scope.logActivity;
-        $scope.logDate;
-
-        $scope.activityArray = dataService.getActivity();
-
-        $scope.addActivity = function(){
-            dataService.newActivity($scope.logActivity, $scope.logDate);
-
-            $scope.logActivity = '';
-            $scope.logDate = '';
-
-        $scope.deleteActivity = function(actToDelete){
-            dataService.removeActivity(actToDelete);
-        }
-
-        $scope.resetForm = function() {
-            $scope.logActivity = '';
-            $scope.logDate = '';
-        }
-
-
-        }
-
-    }).controller('loganController', function($scope,$routeParams,DataService){
-
-        $scope.logan;
-
-        $scope.word = $routeParams.Koalas;
-
-
-    })
-
+});
