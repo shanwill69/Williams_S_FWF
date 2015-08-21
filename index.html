@@ -2,8 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>home page (view 01)</title>
-    <script src="js/angular-route.min.js"></script>
+    <title>home page</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -13,12 +12,19 @@
     <h1>To Do:</h1>
 
     <nav>
-        <ul>
-            <li a href="#/view01"></li>
-            <li a href="#/view02"></li>
-            <li a href="#/view03"></li>
-        </ul>
+
+        <a href="view01.html"><input type="button" value="Logan" /></a>
+        <a href="view02.html"><input type="button" value="Hannah" /></a>
+        <a href="view03.html"><input type="button" value="School" /></a>
+
     </nav>
+
+    <div ng-view></div>
+
+    <script type="text/javascript" src="js/angular.js"></script>
+    <script type="text/javascript" src="js/angular-route.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/dataService.js"></script>
 
 </div>
 

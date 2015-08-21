@@ -2,9 +2,38 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>view 01 - Logan</title>
 </head>
 <body>
+
+    <!-- add to Logan's activity calendar -->
+
+    <div ng-controller="loganController">
+        <h2>Logan's Schedule</h2>
+            <form>
+                <input type="text" placeholder="Activity" ng-model="logActivity" />
+                <input type="text" placeholder="Date" ng-model="logDate" />
+                <input type="submit" value="Add Activity" ng-click="addActivity" />
+                <input type="button" value="Clear" ng-click="resetForm" />
+            </form>
+    </div>
+
+    <!-- display items -->
+
+    <table>
+        <tr>
+            <th>Activity</th>
+            <th>Date</th>
+        </tr>
+
+        <tr ng-repeat="act in activityArray | orderBy : 'date' track ny $id($index)">
+            <td>{{ logActivity }}</td>
+            <td>{{ logDate }}</td>
+            <td><input type="button" value="Delete" ng-click="deleteActivity" /></td>
+        </tr>
+    </table>
+
+
 
 </body>
 </html>

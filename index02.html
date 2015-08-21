@@ -2,9 +2,35 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>view 02</title>
+    <title>view 02 - Hannah</title>
 </head>
 <body>
+
+        <div ng-controller="hannahController">
+            <h2>Hannah's Schedule</h2>
+                <form>
+                    <input type="text" placeholder="Work" ng-model="hanqWork" />
+                    <input type="text" placeholder="Date" ng-model="hanqDate" />
+                    <input type="submit" value="Add Activity" ng-click="addActivity" />
+                    <input type="button" value="Clear" ng-click="resetForm" />
+                </form>
+        </div>
+
+        <!-- display items -->
+
+        <table>
+            <tr>
+                <th>Activity</th>
+                <th>Date</th>
+            </tr>
+
+            <tr ng-repeat="work in workArray | orderBy : 'date' track ny $id($index)">
+                <td>{{ hanqWork }}</td>
+                <td>{{ hanqDate }}</td>
+                <td><input type="button" value="Delete" ng-click="deleteActivity" /></td>
+            </tr>
+        </table>
+
 
 </body>
 </html>
