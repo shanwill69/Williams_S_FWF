@@ -1,30 +1,70 @@
 /*
  * Created by shannonwilliams on 8/10/15.
  */
-angular.module("MyApp").service("dataService",function(){
+angular.module('MyApp',['ngRoute'])
 
-    var activityArray = [];
+    .config(function($routeProvider){
 
-    this.getActs = function(){
-        var actsArray =JSON.parse(localStorage.getItem("activitiesLS")) || [];
-        activitiesArray = actsArray;
-            console.log(actsArray);
-        return activitiesArray;
+        $routeProvider.when('/view01',{
+            templateUrl : "view01.html",
+            controller : "hannahController"
+        }).when('/view02',{
+            templateUrl : "view02.html",
+            controller : "loganController"
+        }).when('/view03/:Koala',{
+            templateUrl : "view03.html",
+            controller : "schoolController"
+        }).otherwise({
+            redirectTo : "/view01"
+        });
 
-    }
+    })
 
-    this.saveActs = function(pActivity,pDate,pTime){
-        var savedActs = {activity: activity, date: pDate, time:pTime };
-        activitiesArray.push(savedActs);
-        localStorage.setItem("activitiesLS",JSON.stringify(activitiesArray));
-    }
-    this.removeActsAt = function(pIndex){
-        activitiesArray.splice(pIndex,1);
-        localStorage.setItem("activitiesLS",JSON.stringify(activitiesArray));
-    }
-    this.destroyLocalStorage = function(){
-        activitiesArray.splice(0);
-        localStorage.clear();
-    }
+.controller('hannahController', function($scope,dataService){
 
-});
+        $scope.newActs;
+        $scope.newDate;
+        $scope.newTime;
+
+        $scope.activitiesArray = dataService.getActivities();
+
+        $scope.addActivities = function() {
+            dataService.newActivities($scope.newActs, $scope.newDate, $scope.newTime);
+
+            $scope.newActs = '';
+            $scope.newDate = '';
+            $scope.newTime = '';
+        }
+
+    }).controller('loganController', function($scope,dataService){
+
+        $scope.newActs;
+        $scope.newDate;
+        $scope.newTime;
+
+        $scope.activitiesArray = dataService.getActivities();
+
+        $scope.addActivities = function() {
+            dataService.newActivities($scope.newActs, $scope.newDate, $scope.newTime);
+
+            $scope.newActs = '';
+            $scope.newDate = '';
+            $scope.newTime = '';
+        }
+
+    }).controller('schoolController', function($scope,dataService) {
+
+        $scope.newActs;
+        $scope.newDate;
+        $scope.newTime;
+
+        $scope.activitiesArray = dataService.getActivities();
+
+        $scope.addActivities = function () {
+            dataService.newActivities($scope.newActs, $scope.newDate);
+
+            $scope.newActs = '';
+            $scope.newDate = '';
+        }
+
+    });
