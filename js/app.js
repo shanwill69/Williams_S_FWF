@@ -1,17 +1,17 @@
 var theApp = angular.module("MyApp",[]);
-theApp.controller("NewController", function($scope,dataService){
+theApp.controller("hannahController", function($scope,dataService){
 
-    $scope.addresses = dataService.getAdds();
-        $scope.newAdds = {};
+    $scope.activitiesArray = dataService.getActs();
+        $scope.newActs = {};
 
-    $scope.addNewAdds = function(){
-        dataService.saveAdds($scope.newAdds.myname,$scope.newAdds.street,
-            $scope.newAdds.city,$scope.newAdds.state,$scope.newAdds.zip);
-        $scope.newAdds = {};
+    $scope.addNewActs = function(){
+        dataService.saveActs($scope.newActs,$scope.newDate,
+            $scope.newTime);
+        $scope.newActs = {};
     };
 
-    $scope.removeAdds = function(idx){
-        dataService.removeAddsAt(idx);
+    $scope.removeActs = function(idx){
+        dataService.removeActsAt(idx);
     }
 
     $scope.clearIt = function(){
