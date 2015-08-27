@@ -12,17 +12,17 @@
     <form>
         <div class="formFields">
             <label>Activity:</label>
-            <input class="input" type="text" name="activity" ng-model="newActs">
+            <input class="input" type="text" name="activity" ng-model="newWork">
         </div>
 
         <div class="formFields">
             <label>Date:</label>
-            <input class="input" type="text" name="date" ng-model="newDate">
+            <input class="input" type="text" name="date" ng-model="newDay">
         </div>
 
         <div class="formFields">
             <label>Time:</label>
-            <input class="input" type="text" name="time" ng-model="newTime">
+            <input class="input" type="text" name="time" ng-model="newHours">
         </div>
 
         <button id="save" ng-click="addNewActs()">Add Activity</button>
@@ -40,15 +40,15 @@
             <th>Time</th>
         </tr>
 
-        <tr ng-repeat="acts in activities track by $index">
-            <td>{{ newActs }}</td>
-            <td>{{ newDate }}</td>
-            <td>{{ newTime }}</td>
+        <tr ng-repeat="hqw in hannah track by $index">
+            <td>{{ newWork }}</td>
+            <td>{{ newDay }}</td>
+            <td>{{ newHours }}</td>
     </table>
 
     <div>
-        <button type="button" ng-click="removeActs($index)">Remove</button>
-        <strong>{{ acts.activity }}</strong>
+        <button type="button" ng-click="removeHannah($index)">Remove</button>
+        <strong>{{ newWork }}</strong>
     </div>
 
 

@@ -1,70 +1,25 @@
-/*
- * Created by shannonwilliams on 8/10/15.
- */
-angular.module('MyApp',['ngRoute'])
+angular.module("MyApp").service("dataService", function() {
 
-    .config(function($routeProvider){
+    this.getHannah = function () {
 
-        $routeProvider.when('/view01',{
-            templateUrl : "view01.html",
-            controller : "hannahController"
-        }).when('/view02',{
-            templateUrl : "view02.html",
-            controller : "loganController"
-        }).when('/view03/:Koala',{
-            templateUrl : "view03.html",
-            controller : "schoolController"
-        }).otherwise({
-            redirectTo : "/view01"
-        });
+        var hannahArray = JSON.parse(localStorage.getItem("hannahLS")) || [];
+        hannahArray = hqwArray;
+        return hannahArray;
+    }
 
-    })
+    this.saveHannah = function (elistType, elistDate) {
+        var savedHannah = {type: elistType, date: elistDate};
+        hannahArray.push(savedHannah);
+        localStorage.setItem("hannahLS", JSON.stringify(hannahArray));
+    }
 
-.controller('hannahController', function($scope,dataService){
+    this.removeHannahAt = function (pIndex) {
+        hannahArray.splice(pIndex, 1);
+        localStorage.setItem("hannahLS", JSON.stringify(hannahArray));
+    }
 
-        $scope.newActs;
-        $scope.newDate;
-        $scope.newTime;
-
-        $scope.activitiesArray = dataService.getActivities();
-
-        $scope.addActivities = function() {
-            dataService.newActivities($scope.newActs, $scope.newDate, $scope.newTime);
-
-            $scope.newActs = '';
-            $scope.newDate = '';
-            $scope.newTime = '';
-        }
-
-    }).controller('loganController', function($scope,dataService){
-
-        $scope.newActs;
-        $scope.newDate;
-        $scope.newTime;
-
-        $scope.activitiesArray = dataService.getActivities();
-
-        $scope.addActivities = function() {
-            dataService.newActivities($scope.newActs, $scope.newDate, $scope.newTime);
-
-            $scope.newActs = '';
-            $scope.newDate = '';
-            $scope.newTime = '';
-        }
-
-    }).controller('schoolController', function($scope,dataService) {
-
-        $scope.newActs;
-        $scope.newDate;
-        $scope.newTime;
-
-        $scope.activitiesArray = dataService.getActivities();
-
-        $scope.addActivities = function () {
-            dataService.newActivities($scope.newActs, $scope.newDate);
-
-            $scope.newActs = '';
-            $scope.newDate = '';
-        }
-
-    });
+    this.destroyLocalStorage = function () {
+        hannahArray.splice(0);
+        localStorage.clear();
+    }
+})

@@ -11,31 +11,31 @@
 
     <form>
         <div class="formFields">
-            <label>Activity:</label>
-            <input class="input" type="text" name="activity" ng-model="newActs.activity">
+            <label>Assignment:</label>
+            <input class="input" type="text" name="activity" ng-model="newAssign">
         </div>
 
         <div class="formFields">
             <label>Due Date:</label>
-            <input class="input" type="text" name="date" ng-model="newActs.date">
+            <input class="input" type="text" name="date" ng-model="newDue">
         </div>
 
-        <button id="save" ng-click="addNewActs()">Add Activity</button>
+        <button id="save" ng-click="addNewAsgn()">Add Assignment</button>
 
     </form>
 
 </div>
 
-<div ng-repeat="acts in activities track by $index">
+<div ng-repeat="asgn in assign track by $index">
 
     <div>
-        <button type="button" ng-click="removeActs($index)">Remove</button>
-        <strong>{{acts.activity}}</strong>
+        <button type="button" ng-click="removeSchool($index)">Remove</button>
+        <strong>{{}}</strong>
     </div>
 
     <div>
-        {{acts.date}}<br />
-        {{acts.time}}
+        {{}}<br />
+        {{}}
     </div>
 
 </div>
