@@ -1,25 +1,45 @@
 angular.module("MyApp").service("dataService", function() {
 
+   
+  /* ----GET HANNAH ------------------------- */  
+   
+  var hannahArray = [
+	  {
+		newWork: "My Paper",
+		newDay: "Tuesday",
+		newHours: "8 to 5pm"
+	  },
+	  {
+		newWork: "My Paper2",
+		newDay: "Wednesday",
+		newHours: "9 to 5pm"
+	  }
+	];
+	
+	/*RETURNS THE ARRAY OF HANNAH*/
     this.getHannah = function () {
-
-        var hannahArray = JSON.parse(localStorage.getItem("hannahLS")) || [];
-        hannahArray = hqwArray;
+	//CHANGED VAR NAME
+        var str = localStorage.getItem("hannahLS");
+        hannahArray = JSON.parse(str)  || hannahArray;
         return hannahArray;
     }
 
-    this.saveHannah = function (elistType, elistDate) {
-        var savedHannah = {type: elistType, date: elistDate};
-        hannahArray.push(savedHannah);
-        localStorage.setItem("hannahLS", JSON.stringify(hannahArray));
+	 /*ADDS A NEW HANNAH TO THE HANNAH ARRAY*/
+     //WRONG NAMES HAVE TO MATCH VIEW01.HTML PAGE        
+    this.saveHannah = function (newWork, newDay,newHours) {
+        var saveHannah = {  //removed D
+			hannahnewWork: newWork, 
+			hannahnewDay: newDay,
+			hannahnewHours: newHours
+		};
+		
+        hannahArray.push(saveHannah);  //REMOVED D
+        var str = JSON.stringify(hannahArray);
+        localStorage.setItem("hannahLS", str);
     }
 
-    this.removeHannahAt = function (pIndex) {
-        hannahArray.splice(pIndex, 1);
+    this.removeHannahAt = function (hannah) {
+        hannahArray.splice(hannahArray.indexOf(hannah), 1);
         localStorage.setItem("hannahLS", JSON.stringify(hannahArray));
     }
-
-    this.destroyLocalStorage = function () {
-        hannahArray.splice(0);
-        localStorage.clear();
-    }
-})
+});

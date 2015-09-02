@@ -26,29 +26,34 @@ var myLists = angular.module('MyApp',['ngRoute'])
 
 .controller('hannahController', function($scope,dataService){
 
-        $scope.newWork;
-        $scope.newDay;
-        $scope.newHours;
+        $scope.hannahnewWork;
+        $scope.hannahnewDay;
+        $scope.hannahnewHours;
 
         $scope.hannahArray = dataService.getHannah();
 
         $scope.addHannah = function() {
-            dataService.newHannah($scope.newWork, $scope.newDay, $scope.newHours);
+			            //changed to save to match dataserivce page
+            dataService.saveHannah($scope.hannahnewWork, $scope.hannahnewDay, $scope.hannahnewHours);
 
-            $scope.newWork = '';
-            $scope.newDay = '';
-            $scope.newHours = '';
-        };
+            $scope.hannahnewWork = '';
+            $scope.hannahnewDay = '';
+            $scope.hannahnewHours = '';
+        }; 
+		
+		$scope.removeHannah = function(deleteHannah){
+		        dataService.removeHannahAt(deleteHannah);
+		};
 
-		$scope.removeHannah = function(idx){
-		        dataService.removeHannahAt(idx);
-		    }
-
-	    $scope.nukeIt = function(){
-		        dataService.destroyLocalStorage();
-		    }
-
-		}).controller('loganController', function($scope,dataService){
+	    $scope.resetHannah = function(){
+		    $scope.hannahnewWork = '';
+            $scope.hannahnewDay = '';
+            $scope.hannahnewHours = '';
+		};
+		
+		});
+		
+		.controller('loganController', function($scope,dataService){
 
         $scope.newActs;
         $scope.newDate;
@@ -56,7 +61,7 @@ var myLists = angular.module('MyApp',['ngRoute'])
 
         $scope.loganArray = dataService.getLogan();
 
-        $scope.addALogan = function() {
+        $scope.addLogan = function() {
             dataService.newLogan($scope.newActs, $scope.newDate, $scope.newTime);
 
             $scope.newActs = '';
