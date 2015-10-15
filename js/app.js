@@ -49,11 +49,9 @@ var myLists = angular.module('MyApp',['ngRoute'])
 		    $scope.hannahnewWork = '';
             $scope.hannahnewDay = '';
             $scope.hannahnewHours = '';
-		};
+		}
 		
-		});
-		
-		.controller('loganController', function($scope,dataService){
+		}).controller('loganController', function($scope,dataService){
 
         $scope.newActs;
         $scope.newDate;

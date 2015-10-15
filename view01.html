@@ -34,9 +34,9 @@
         </tr>
 <!--THIS NEEDS TO BE HANNAHARRAY -->
         <tr ng-repeat="hannah in hannahArray track by $id($index)">
-            <td>{{ hannah.newWork }}</td>
-            <td>{{ hannah.newDay }}</td>
-            <td>{{ hannah.newHours }}</td>   
+            <td>{{ newWork }}</td>
+            <td>{{ newDay }}</td>
+            <td>{{ newHours }}</td>
             <td>
                 <button type="button" ng-click="removeHannah(hannah)">Remove</button>
       <!--REMOVE THIS  <strong>{{ newWork }}</strong>-->
